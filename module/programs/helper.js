@@ -327,7 +327,7 @@ module.exports = class ProgramsHelper {
     return new Promise(async (resolve, reject) => {
         try {
 
-            let programsData = await this.list({_id : programId },["_id"]);
+            let programsData = await this.list({_id : programId,isAPrivateProgram:true },["_id"]);
 
             if( !programsData.length > 0 ) {
               throw {
@@ -340,7 +340,8 @@ module.exports = class ProgramsHelper {
 
             let updateSolution = 
             await database.models.programs.findOneAndUpdate({
-              _id : programId
+              _id : programId,
+              isAPrivateProgram:true 
             },{
               $pull : {
                 components : { $in : updateSolutionIds }
