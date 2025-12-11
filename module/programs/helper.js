@@ -327,7 +327,7 @@ module.exports = class ProgramsHelper {
     return new Promise(async (resolve, reject) => {
         try {
 
-            let programsData = await this.list({_id : programId,isAPrivateProgram:true },["_id"]);
+            let programsData = await this.list({_id : programId },["_id"]);
 
             if( !programsData.length > 0 ) {
               throw {
